@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRAINING>
+    <SERIES>Python for Data Analysis</SERIES>
+    <COURSE>Data Scraping, APIs, and Automation</COURSE>
+    <TOPICS>Contents 1
+        <NAME>Python</NAME>
+        <NAME>Beautiful Soup</NAME>
+        <NAME>Selenium</NAME>
+    </TOPICS>
+    <LENGTH>3 Hours</LENGTH>
+</TRAINING>
