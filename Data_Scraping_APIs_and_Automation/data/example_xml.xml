@@ -2,10 +2,11 @@
 <TRAINING>
     <SERIES>Python for Data Analysis</SERIES>
     <COURSE>Data Scraping, APIs, and Automation</COURSE>
-    <TOPICS>Contents 1
-        <NAME>Python</NAME>
+    <TOPICS>
+        <NAME>Requests</NAME>
         <NAME>Beautiful Soup</NAME>
         <NAME>Selenium</NAME>
+        <NAME>APIs</NAME>
     </TOPICS>
     <LENGTH>3 Hours</LENGTH>
 </TRAINING>

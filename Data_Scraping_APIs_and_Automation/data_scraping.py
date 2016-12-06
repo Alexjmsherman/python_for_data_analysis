@@ -49,7 +49,7 @@ paragraphs[-1]  # view the last item
 
 # iterate over the results
 for p in paragraphs:
-    print p.text, '\n'
+    print(p.text)
 
 '''
 EXERCISE ONE
@@ -68,16 +68,17 @@ b.find('p')['id']
 # print the text of all four li tags
 li = b.find_all('li')
 for l in li:
-    print l.text
+    print(l.text)
 
 # bonus question: print the text of only the API resources
 li = b.find('ul', attrs={'id':'api'}).find_all('li')
 for l in li:
-    print l.text
+    print(l.text)
 
 
 '''
 PART TWO
+    analyze HTML from opm.gov
 '''
 
 # HTML from opm.gov
@@ -128,12 +129,14 @@ PART THREE
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+# specify which browser to use (Chrome)
 browser = webdriver.Chrome(r'C:\Users\alsherman\Desktop\Programming\python\chromedriver.exe')
 browser.implicitly_wait(2)
 
-browser.get(r'https://www.opm.gov/data/Index.aspx?tag=FedScope')  # stand alone build
+# open a browser
+browser.get(r'https://www.opm.gov/data/Index.aspx?tag=FedScope')
 
-# select the sort by box
+# select an item in the sort by box
 browser.find_element_by_xpath(
     r'//*[@id="ctl01_ctl00_MainContentPlaceHolder_MainContentPlaceHolder_SortCol"]/option[2]').click()
 
@@ -144,7 +147,7 @@ browser.find_element_by_xpath(
 # type and submit a query in the search box
 inputbox = browser.find_element_by_xpath(
     r'//*[@id="ctl01_ctl00_MainContentPlaceHolder_MainContentPlaceHolder_SearchTerm"]')
-inputbox.send_keys('opm')
+inputbox.send_keys('OPM')
 inputbox.send_keys(Keys.ENTER)
 
 # select the assessment drop down
@@ -155,8 +158,13 @@ html = browser.find_element_by_xpath(
     r'//*[@id="ctl01_ctl00_MainContentDiv"]/table/tbody/tr[2]/td[3]/span/a')
 link = html.get_attribute('href')
 
+# close the browser
+browser.close()
+
+# download and open the zip file
 from download_zip import download_zip_file
 data = download_zip_file(link, pandas=True)
+data.open_zip()
 
 
 '''
@@ -167,10 +175,10 @@ PART FOUR
 # scrape XML
 xml_url = r'https://raw.githubusercontent.com/Alexjmsherman/python_for_data_analysis/master/Data_Scraping_APIs_and_Automation/data/example_xml.xml'
 r = requests.get(xml_url)
-b = BeautifulSoup(r.text)
+b = BeautifulSoup(r.text, 'xml')
 
 # find the fourth topic
-b.find('topics').find_all('name')[3]
+b.find('TOPICS').find_all('NAME')[3]
 
 # collect data from google maps api
 api_url = r'https://maps.googleapis.com/maps/api/geocode/xml?address=Deloitte Rosslyn'
