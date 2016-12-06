@@ -5,11 +5,12 @@ Created on Fri Dec 02 12:34:52 2016
 @author: alsherman
 """
 
-import csv
-import zipfile
-import urllib
-import pandas as pd
 from collections import OrderedDict
+import csv
+import pandas as pd
+import urllib
+import zipfile
+
 
 class download_zip_file():
     """ download, select, and open zip files """
